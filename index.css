@@ -1,3 +1,7 @@
+body {
+	background-color: #47565f;
+}
+
 table.keyboard {
 	font: sans-serif;
 	font-size: 40px;
@@ -31,4 +35,8 @@ td.small {
 div.border {
 	background-color: #47565f;
 	width: 400px;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }

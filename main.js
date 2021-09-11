@@ -8,8 +8,10 @@ const path = require('path')
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 400,
-    height: 600,
+    width: 415,
+    height: 835,
+    frame: true,
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
@@ -35,6 +37,9 @@ app.whenReady().then(() => {
   })
 })
 
+app.on('browser-window-created', function (e, window) {
+  window.setMenu(null);
+})
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
@@ -44,3 +49,5 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+mainWindow.setMenuBarVisibility(false)
