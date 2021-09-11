@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="./index.css">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Hello World!</title>
+</head>
+
+<body>
+  <form name="hexcalc">
+    <div class="border">
+      <h2>here</h2>
+      <h2>here</h2>
+      <table class='keyboard' border="1">
+        <tr>
+          <td class='small'>Shift</td>
+          <td class='small'>Little Endian</td>
+          <td class='small'>Reminder</td>
+          <td class='small'>binary</td>
+        </tr>
+        <tr>
+          <td class='small'>float</td>
+          <td class='small'>Mask</td>
+          <td class='small'>Private</td>
+          <td class='small'>Public</td>
+        </tr>
+        <tr>
+          <td class='small'>Xor</td>
+          <td class='small'>
+            << </td>
+          <td class='small'>Push
+          </td>
+          <td class='small'>Pop</td>
+        </tr>
+        <tr>
+          <td class='small'>And</td>
+          <td class='small'>Or</td>
+          <td class='small'>Nand</td>
+          <td class='small'>Nor</td>
+        </tr>
+        <tr>
+          <td>+</td>
+          <td>-</td>
+          <td id='multiply'></td>
+          <td>/</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td class='small'>BK</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td class='small'>CLR</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td colspan="2">0</td>
+          <td>.</td>
+        </tr>
+      </table>
+    </div>
+  </form>
+  <script src="./renderer.js" type="module"></script>
+</body>
+
+</html>
