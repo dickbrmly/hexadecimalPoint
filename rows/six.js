@@ -2,8 +2,7 @@
  *                                    functions for all 6 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { Calculator } from '../state.js';
-var state = new Calculator();
+import { state } from '../state.js';
 
 function f()
 {
@@ -36,15 +35,9 @@ function back()
 
 function clear()
 {
-    if (state.entry === 'hex')
-    {
-        state.entry = 'dec'; //TODO need to show hex/dec entry mode
-        document.getElementById("hex").innerHTML = 'Dec';
-    }
-    else
-    {
-        state.entry = 'hex';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    state.func = 'add';
+    state.upper = 0;
+    state.lower = 0;
+    state.display();
 }
 export { f, or, and, back, clear }

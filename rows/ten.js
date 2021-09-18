@@ -2,8 +2,7 @@
  *                                    functions for all 10 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { Calculator } from '../state.js';
-var state = new Calculator();
+import { state } from '../state.js';
 
 function one()
 {

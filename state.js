@@ -2,7 +2,7 @@
  *                                    functions for all 8 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-class Calculator
+class Cal
 {
     constructor()
     {
@@ -54,58 +54,6 @@ Array.prototype.peek = function()
     // empty array... 
     return undefined; // or another default value... 
 };
-/**********************************************************************************************************************
- *                                                             Stack class
- * 
- ***********************************************************************************************************************/
-class Stack
-{
-    // Array is used to implement stack 
-    constructor()
-    {
-        this.stack = [0];
-    }
-    // push function 
-    push(element)
-    {
-        // push element into the stack
-        this.stack.push(element);
-    }
-    pop()
-    {
 
-    }
-    // pop function 
-    peek()
-    {
-        // return top most element in the stack 
-        // and removes it from the stack 
-        // Underflow if stack is empty 
-        if (this.stack.length == 0)
-            return "Underflow";
-        return this.stack.pop();
-    }
-    // length function 
-    length()
-    {
-        // return stack legth
-        return this.stack.length;
-    }
-    // isEmpty function 
-    isEmpty()
-    {
-        // return true if stack is empty 
-        return this.stack.length === 0;
-    }
-    // printStack function
-    printStack()
-    {
-        var stringBuilder = "";
-        for (var item = 0; item < this.stack.length; item++)
-            stringBuilder += `
-            $ { item }: ` + this.stack[item] + '\n';
-        return stringBuilder;
-    }
-}
-
-export { Calculator, Stack };
+let state = new Cal();
+export { state };

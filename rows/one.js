@@ -2,8 +2,7 @@
  *                                     functions for 1 row of keyboard entries
  * 
  ***********************************************************************************************************************/
-import { Calculator } from '../state.js';
-var state = new Calculator();
+import { state } from '../state.js';
 
 // TODO: functions for all keyboard functions
 function shift()

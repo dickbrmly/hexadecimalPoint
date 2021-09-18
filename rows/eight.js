@@ -2,31 +2,21 @@
  *                                    functions for all 8 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { Calculator } from '../state.js';
-var state = new Calculator();
+import { state } from '../state.js';
 
 function seven()
 {
-    if (state.mode === 'down')
-    {
-        state.mode = 'up';
-        document.getElementById("displayShift").style.backgroundColor = 'white';
-    }
-    else
-    {
-        state.mode = 'down';
-        document.getElementById("displayShift").style.backgroundColor = 'gray';
-    }
+    state.keyEntry(7);
 }
 
 function eight()
 {
-    this.keyEntry(8);
+    state.keyEntry(8);
 }
 
 function nine()
 {
-    this.keyEntry(9);
+    state.keyEntry(9);
 }
 
 function exp()

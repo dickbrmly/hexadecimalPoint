@@ -5,7 +5,9 @@
 // selectively enable features needed in the rendering
 // process.
 
-import { Calculator } from './state.js';
+import { state } from './state.js';
+//let state = new Calculator();
+
 import { shift, littleEndian, integer, modeBin, modeHex } from './rows/one.js'
 import { recipocate, radius, naturalExponent, ln, abs } from './rows/two.js'
 import { sin, cos, tan, rectangular, polor } from './rows/three.js'
@@ -17,8 +19,6 @@ import { seven, eight, nine, exp, mod } from './rows/eight.js'
 import { four, five, six, multiply, divide } from './rows/nine.js'
 import { one, two, three, add, subtract } from './rows/ten.js'
 import { zero, period, equal } from './rows/eleven.js'
-
-var state = new Calculator();
 
 /**********************************************************************************************************************
  *                                     Listeners for all keyboard entries
@@ -67,9 +67,9 @@ document.getElementById("C").addEventListener("click", c);
 document.getElementById("D").addEventListener("click", d);
 document.getElementById("E").addEventListener("click", e);
 
-document.getElementById("7").addEventListener("click", a); //row 8
-document.getElementById("8").addEventListener("click", b);
-document.getElementById("9").addEventListener("click", c);
+document.getElementById("7").addEventListener("click", seven); //row 8
+document.getElementById("8").addEventListener("click", eight);
+document.getElementById("9").addEventListener("click", nine);
 document.getElementById("exponential").addEventListener("click", exp);
 document.getElementById("mod").addEventListener("click", mod);
 
