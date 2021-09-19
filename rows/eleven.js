@@ -3,6 +3,7 @@
  * 
  ***********************************************************************************************************************/
 import { state, display } from '../state.js';
+import { or } from './six.js';
 
 function zero()
 {
@@ -13,12 +14,37 @@ function zero()
 function period() { state.direction = 'below'; }
 
 function equal()
-{ //TODO method needed
-    let number = state.value.pop();
+{
     let number2 = state.value.pop();
+    let number = state.value.pop();
 
     switch (state.method.pop())
     {
+        case 'and':
+            number = number & number2;
+            state.value.push(number);
+            break;
+
+        case 'or':
+            number = number | number2;
+            state.value.push(number);
+            break;
+
+        case 'mod':
+            number = number % number2;
+            state.value.push(number);
+            break;
+
+        case '/':
+            number /= number2;
+            state.value.push(number);
+            break;
+
+        case '*':
+            number *= number2;
+            state.value.push(number);
+            break;
+
         case 'sub':
             number -= number2;
             state.value.push(number);

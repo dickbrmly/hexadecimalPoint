@@ -19,8 +19,8 @@ function shift()
 }
 
 function littleEndian()
-{ //function convert only
-    state.func = 'littleEndian';
+{ //TODO: function convert only
+    //state.func = 'littleEndian';
 }
 
 function integer()

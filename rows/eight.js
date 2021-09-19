@@ -21,11 +21,11 @@ function nine()
 
 function exp()
 {
-    state.func = 'exp';
+    state.func('exp');
 }
 
 function mod()
 {
-    state.func = 'mod';
+    state.func('mod');
 }
 export { seven, eight, nine, exp, mod }

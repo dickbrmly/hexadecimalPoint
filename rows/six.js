@@ -11,12 +11,12 @@ function f()
 
 function or()
 {
-    state.func = 'or';
+    state.func('or');
 }
 
 function and()
 {
-    state.func = 'and';
+    state.func('and');
 }
 
 function back()
