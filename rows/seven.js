@@ -6,26 +6,26 @@ import { state } from '../state.js';
 
 function a()
 {
-    state.keyEntry(10);
+    if (state.factor === 16) state.keyEntry(10);
 }
 
 function b()
 {
-    state.keyEntry(11);
+    if (state.factor === 16) state.keyEntry(11);
 }
 
 function c()
 {
-    state.keyEntry(12);
+    if (state.factor === 16) state.keyEntry(12);
 }
 
 function d()
 {
-    state.keyEntry(13);
+    if (state.factor === 16) state.keyEntry(13);
 }
 
 function e()
 {
-    state.keyEntry(14);
+    if (state.factor === 16) state.keyEntry(14);
 }
 export { a, b, c, d, e }
