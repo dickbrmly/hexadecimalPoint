@@ -35,9 +35,12 @@ function back()
 
 function clear()
 {
+    state.direction = 'above';
     state.func = 'add';
-    state.upper = 0;
-    state.lower = 0;
-    state.display();
+    state.upper.pop();
+    state.upper.push(0);
+    state.lower.pop()
+    state.lower.push(0);
+    document.getElementById("decimalDisplay").innerHTML = state.upper.peek() + '.' + state.lower.peek();
 }
 export { f, or, and, back, clear }

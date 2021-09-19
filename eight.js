@@ -2,8 +2,7 @@
  *                                    functions for all 8 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { Calculator } from '../state.js';
-var state = new Calculator();
+import { state } from '../state.js';
 
 function seven()
 {
@@ -21,12 +20,12 @@ function seven()
 
 function eight()
 {
-    this.keyEntry(8);
+    state.keyEntry(8);
 }
 
 function nine()
 {
-    this.keyEntry(9);
+    state.keyEntry(9);
 }
 
 function exp()

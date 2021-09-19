@@ -2,49 +2,62 @@
  *                                    functions for all 8 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-class Cal
+class Calculator
 {
-    constructor()
-    {
-        this.shift = 'down'; //or up
-        this.factor = 10; //or hex
-        this.display = 'normal'; //or binary
-        this.func = 'add'
-        this.upper = [0];
-        this.lower = [0];
-        this.direction = 'above'; //below for below decimal or hexidecimal point
-    }
+    shift = 'down'; //or up
+    factor = 10; //or hex
+    disp = 'normal'; //or binary
+    method = ['']; //add sub mul div mod 
+    value = [0];
+    position = 0;
+    direction = 'above'; //below for below decimal or hexidecimal point
+
     keyEntry(value)
     {
         if (this.direction === 'above')
         {
-            let working = this.upper.pop() * this.factor + parseInt(value, this.factor);
-            this.upper.push(working);
+            let working = this.value.pop() * state.factor + value;
+            this.value.push(working);
         }
         else
         {
-            let working = this.lower.pop() / this.factor + parseInt(value, this.factor);
-            this.lower.push(working);
+            this.position -= 1;
+            let working = this.value.pop() + value * Math.pow(state.factor, this.position);
+            this.value.push(working.toString());
         }
-        document.getElementById("decimalDisplay").innerHTML = this.upper.peek() + '.' + this.lower.peek();
-    }
-
-    functionEntry(func)
-    {
-        this.upper.push(0);
-        this.lower.push(0);
-        this.func = func;
-    }
-
-    display()
-    {
-        document.getElementById("decimalDisplay").innerHTML = this.upper.peek() + '.' + this.lower.peek();
+        display();
     }
 }
-/**********************************************************************************************************************
- *                                    functions for all 8 row keyboard entries 
- * 
- ***********************************************************************************************************************/
+/*********************************************************************************************************************/
+Calculator.prototype.func = function(entry)
+{
+    state.number.push(0);
+    state.method.push(entry);
+    state.direction = 'above';
+}
+/*********************************************************************************************************************/
+let state = new Calculator();
+
+function display()
+{
+    //let below = state.lower.peek();
+    document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
+
+    let top = parseInt(state.value.peek());
+
+    let resolve = state.value.peek() - top;
+    let bottom = 0;
+
+    while (resolve > .000000001)
+    {
+        resolve *= 16;
+        bottom *= 0x10;
+        bottom += parseInt(resolve);
+        resolve = resolve - parseInt(resolve);
+    }
+    document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+}
+/*********************************************************************************************************************/
 Array.prototype.peek = function()
 {
     if (this.length > 0)
@@ -54,6 +67,6 @@ Array.prototype.peek = function()
     // empty array... 
     return undefined; // or another default value... 
 };
+/*********************************************************************************************************************/
 
-let state = new Cal();
-export { state };
+export { state, display };

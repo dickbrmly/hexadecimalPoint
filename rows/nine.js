@@ -14,6 +14,7 @@ function five()
     state.keyEntry(5);
 }
 
+
 function six()
 { //TODO method needed
     state.keyEntry(6);

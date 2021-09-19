@@ -3,7 +3,6 @@
  * 
  ***********************************************************************************************************************/
 import { state } from '../state.js';
-
 // TODO: functions for all keyboard functions
 function shift()
 {
