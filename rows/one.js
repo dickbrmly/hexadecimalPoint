@@ -20,13 +20,12 @@ function shift()
 
 function littleEndian()
 { //function convert only
-
+    state.func = 'littleEndian';
 }
 
 function integer()
-{ //TODO method needed
-    state.resultLower.pop();
-    state.resultLower.push(0);
+{
+    state.push(parseInt(state.value.pop()));
 }
 
 function modeBin()

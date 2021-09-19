@@ -10,27 +10,18 @@ function f()
 }
 
 function or()
-{ //TODO method needed
-
+{
+    state.func = 'or';
 }
 
 function and()
-{ //TODO method needed
-
+{
+    state.func = 'and';
 }
 
 function back()
-{
-    if (state.display === 'bin')
-    {
-        state.display = 'normal';
-        document.getElementById("displayBinary").style.backgroundColor = 'gray';
-    }
-    else
-    {
-        state.display = 'binary';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+{ //TODO: need method here
+
 }
 
 function clear()

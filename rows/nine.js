@@ -22,11 +22,11 @@ function six()
 
 function multiply()
 {
-    state.method('*');
+    state.func('*');
 }
 
 function divide()
 {
-    state.method('/');
+    state.func('/');
 }
 export { four, five, six, multiply, divide }
