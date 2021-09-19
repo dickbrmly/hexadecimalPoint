@@ -2,7 +2,7 @@
  *                                    functions for all 6 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { state } from '../state.js';
+import { state, display } from '../state.js';
 
 function f()
 {
@@ -35,12 +35,11 @@ function back()
 
 function clear()
 {
+    state.position = 0;
     state.direction = 'above';
     state.func = 'add';
-    state.upper.pop();
-    state.upper.push(0);
-    state.lower.pop()
-    state.lower.push(0);
-    document.getElementById("decimalDisplay").innerHTML = state.upper.peek() + '.' + state.lower.peek();
+    state.value.pop();
+    state.value.push(0);
+    display();
 }
 export { f, or, and, back, clear }
