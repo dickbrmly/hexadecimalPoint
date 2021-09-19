@@ -21,29 +21,11 @@ function nine()
 
 function exp()
 {
-    if (state.display === 'bin')
-    {
-        state.display = 'normal';
-        document.getElementById("displayBinary").style.backgroundColor = 'gray';
-    }
-    else
-    {
-        state.display = 'binary';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    state.func = 'exp';
 }
 
 function mod()
 {
-    if (state.entry === 'hex')
-    {
-        state.entry = 'dec'; //TODO need to show hex/dec entry mode
-        document.getElementById("hex").innerHTML = 'Dec';
-    }
-    else
-    {
-        state.entry = 'hex';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    state.func = 'mod';
 }
 export { seven, eight, nine, exp, mod }

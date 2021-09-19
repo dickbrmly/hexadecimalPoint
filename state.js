@@ -31,7 +31,7 @@ class Calculator
 /*********************************************************************************************************************/
 Calculator.prototype.func = function(entry)
 {
-    state.number.push(0);
+    state.value.push(0);
     state.method.push(entry);
     state.direction = 'above';
 }

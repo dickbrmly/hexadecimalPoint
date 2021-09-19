@@ -14,25 +14,19 @@ function period() { state.direction = 'below'; }
 
 function equal()
 { //TODO method needed
-    let number1U = state.upper.pop();
-    let number1L = state.lower.pop();
-    let number2U = state.upper.pop();
-    let number2L = state.lower.pop();
+    let number = state.value.pop();
+    let number2 = state.value.pop();
 
     switch (state.method.pop())
     {
         case 'sub':
-            number1U -= number2U;
-            number1L -= number2L;
-            state.lower.push(number1L);
-            state.upper.push(number1U);
+            number -= number2;
+            state.value.push(number);
             break;
 
         default:
-            number1U += number2U;
-            number1L += number2L;
-            state.lower.push(number1L);
-            state.upper.push(number1U);
+            number += number2;
+            state.value.push(number);
             break;
     }
     display();
