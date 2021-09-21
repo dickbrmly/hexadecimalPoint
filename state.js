@@ -11,9 +11,15 @@ class Calculator
     value = [0];
     position = 0;
     direction = 'above'; //below for below decimal or hexidecimal point
+    pressedEqual = false;
 
     keyEntry(value)
     {
+        if (state.pressEqual)
+        {
+            this.value.pop();
+            this.value.push(0);
+        }
         if (this.equal === true) clear();
         if (this.direction === 'above')
         {
@@ -32,6 +38,7 @@ class Calculator
 /*********************************************************************************************************************/
 Calculator.prototype.func = function(entry)
 {
+    if (state.pressEqual) this.pressedEqual = false;
     if (state.method.length > 0) equal();
     state.value.push(0);
     state.method.push(entry);
@@ -71,6 +78,7 @@ Array.prototype.peek = function()
 /*********************************************************************************************************************/
 function clear()
 {
+    state.pressEqual = false;
     state.position = 0;
     state.direction = 'above';
     while (state.method.length > 0) state.method.pop();
@@ -81,6 +89,7 @@ function clear()
 /*********************************************************************************************************************/
 function equal()
 {
+    state.pressEqual = true;
     if (state.value.length < 2) return;
     state.position = 0;
     let number2 = state.value.pop();
