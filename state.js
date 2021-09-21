@@ -7,13 +7,14 @@ class Calculator
     shift = 'down'; //or up
     factor = 10; //or hex
     disp = 'normal'; //or binary
-    method = ['']; //add sub mul div mod 
+    method = []; //add sub mul div mod 
     value = [0];
     position = 0;
     direction = 'above'; //below for below decimal or hexidecimal point
 
     keyEntry(value)
     {
+        if (this.equal === true) clear();
         if (this.direction === 'above')
         {
             let working = this.value.pop() * state.factor + value;
@@ -31,6 +32,7 @@ class Calculator
 /*********************************************************************************************************************/
 Calculator.prototype.func = function(entry)
 {
+    if (state.method.length > 0) equal();
     state.value.push(0);
     state.method.push(entry);
     state.direction = 'above';
@@ -40,7 +42,6 @@ let state = new Calculator();
 
 function display()
 {
-    //let below = state.lower.peek();
     document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
 
     let top = parseInt(state.value.peek());
@@ -68,5 +69,61 @@ Array.prototype.peek = function()
     return undefined; // or another default value... 
 };
 /*********************************************************************************************************************/
+function clear()
+{
+    state.position = 0;
+    state.direction = 'above';
+    while (state.method.length > 0) state.method.pop();
+    while (state.value.length > 0) state.value.pop();
+    state.value.push(0);
+    display();
+}
+/*********************************************************************************************************************/
+function equal()
+{
+    if (state.value.length < 2) return;
+    state.position = 0;
+    let number2 = state.value.pop();
+    let number = state.value.pop();
 
-export { state, display };
+    switch (state.method.pop())
+    {
+        case 'and':
+            number = number & number2;
+            state.value.push(number);
+            break;
+
+        case 'or':
+            number = number | number2;
+            state.value.push(number);
+            break;
+
+        case 'mod':
+            number = number % number2;
+            state.value.push(number);
+            break;
+
+        case '/':
+            number /= number2;
+            state.value.push(number);
+            break;
+
+        case '*':
+            number *= number2;
+            state.value.push(number);
+            break;
+
+        case '-':
+            number -= number2;
+            state.value.push(number);
+            break;
+
+        default:
+            number += number2;
+            state.value.push(number);
+            break;
+    }
+    display();
+}
+/***********************************************************************************************************************/
+export { state, display, clear, equal };

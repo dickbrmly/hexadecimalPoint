@@ -2,7 +2,7 @@
  *                                    functions for all 10 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { state } from '../state.js';
+import { state, equal } from '../state.js';
 
 function one()
 {

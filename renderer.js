@@ -5,7 +5,7 @@
 // selectively enable features needed in the rendering
 // process.
 
-import { state } from './state.js';
+import { state, clear, equal } from './state.js';
 //let state = new Calculator();
 
 import { shift, littleEndian, integer, modeBin, modeHex } from './rows/one.js'
@@ -13,12 +13,12 @@ import { recipocate, radius, naturalExponent, ln, abs } from './rows/two.js'
 import { sin, cos, tan, rectangular, polor } from './rows/three.js'
 import { mask, priv, pub, xxor, shiftLeft } from './rows/four.js'
 import { push, pop, top, nor, nand } from './rows/five.js'
-import { f, or, and, back, clear } from './rows/six.js'
+import { f, or, and, back } from './rows/six.js'
 import { a, b, c, d, e } from './rows/seven.js'
 import { seven, eight, nine, exp, mod } from './rows/eight.js'
 import { four, five, six, multiply, divide } from './rows/nine.js'
 import { one, two, three, add, subtract } from './rows/ten.js'
-import { zero, period, equal } from './rows/eleven.js'
+import { zero, period } from './rows/eleven.js'
 
 /**********************************************************************************************************************
  *                                     Listeners for all keyboard entries

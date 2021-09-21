@@ -24,13 +24,5 @@ function back()
 
 }
 
-function clear()
-{
-    state.position = 0;
-    state.direction = 'above';
-    state.func = 'add';
-    state.value.pop();
-    state.value.push(0);
-    display();
-}
-export { f, or, and, back, clear }
+
+export { f, or, and, back }
