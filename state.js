@@ -47,6 +47,32 @@ Calculator.prototype.func = function(entry)
 /*********************************************************************************************************************/
 let state = new Calculator();
 
+function display2(type)
+{
+    let top = parseInt(state.value.peek());
+    let resolve = state.value.peek() - top;
+    let bottom = 0;
+
+    while (resolve > .000000001)
+    {
+        resolve *= 16;
+        bottom *= 0x10;
+        bottom += parseInt(resolve);
+        resolve = resolve - parseInt(resolve);
+    }
+
+
+    if (type === 'rectangular')
+    {
+        document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10) + " + " + state.value[1].toString(10) + 'i';
+        document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+    }
+    //document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
+
+
+
+}
+/***********************************************************************************************************************/
 function display()
 {
     document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
@@ -97,47 +123,79 @@ function equal()
 
     switch (state.method.pop())
     {
+        case 'rec':
+            let base = number * Math.sin(number2);
+            let opposite = number * Math.cos(number2);
+            state.value.push(opposite);
+            state.value.push(base);
+            display2('angular');
+            break;
+
+        case 'pol':
+            let radius = Math.pow(number * number + number2 * number2, 0.5);
+            let angle = Math.atan(number / number2);
+            state.value.push(radius);
+            state.value.push(angle);
+            display2('rectangular')
+            break;
+
+        case 'r':
+            number = number * number + number2 * number2;
+            number = Math.pow(number, 0.5);
+            state.value.push(number);
+            display();
+
+            break;
+
         case '^':
             number = Math.pow(number, number2);
             state.value.push(number);
+            display();
+
             break;
 
         case 'and':
             number = number & number2;
             state.value.push(number);
+            display();
             break;
 
         case 'or':
             number = number | number2;
             state.value.push(number);
+            display();
             break;
 
         case 'mod':
             number = number % number2;
             state.value.push(number);
+            display();
             break;
 
         case '/':
             number /= number2;
             state.value.push(number);
+            display();
             break;
 
         case '*':
             number *= number2;
             state.value.push(number);
+            display();
             break;
 
         case '-':
             number -= number2;
             state.value.push(number);
+            display();
             break;
 
         default:
             number += number2;
             state.value.push(number);
+            display();
             break;
     }
-    display();
 }
 /***********************************************************************************************************************/
 export { state, display, clear, equal };

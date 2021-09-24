@@ -19,12 +19,12 @@ function push()
 }
 
 function pop()
-{ //TODO method needed
+{ //TODO pop needed
 
 }
 
 function top()
-{ //TODO method needed
+{ //TODO top needed
 
 }
 
@@ -46,7 +46,7 @@ function nand()
 {
     if (state.entry === 'hex')
     {
-        state.entry = 'dec'; //TODO need to show hex/dec entry mode
+        state.entry = 'dec';
         document.getElementById("hex").innerHTML = 'Dec';
     }
     else

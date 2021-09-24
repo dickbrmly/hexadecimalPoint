@@ -2,57 +2,39 @@
  *                                    functions for all 3 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { state } from '../state.js';
+import { state, display } from '../state.js';
 
 function sin()
 {
-    if (state.mode === 'down')
-    {
-        state.mode = 'up';
-        document.getElementById("displayShift").style.backgroundColor = 'white';
-    }
-    else
-    {
-        state.mode = 'down';
-        document.getElementById("displayShift").style.backgroundColor = 'gray';
-    }
+    let number = state.value.pop();
+    number = Math.sin(number);
+    state.value.push(number);
+    display();
 }
 
 function cos()
-{ //TODO method needed
-
+{
+    let number = state.value.pop();
+    number = Math.cos(number);
+    state.value.push(number);
+    display();
 }
 
 function tan()
 { //TODO method needed
-
+    let number = state.value.pop();
+    number = Math.tan(number);
+    state.value.push(number);
+    display();
 }
 
 function rectangular()
 {
-    if (state.display === 'bin')
-    {
-        state.display = 'normal';
-        document.getElementById("displayBinary").style.backgroundColor = 'gray';
-    }
-    else
-    {
-        state.display = 'binary';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    state.func('rec');
 }
 
 function polor()
 {
-    if (state.entry === 'hex')
-    {
-        state.entry = 'dec'; //TODO need to show hex/dec entry mode
-        document.getElementById("hex").innerHTML = 'Dec';
-    }
-    else
-    {
-        state.entry = 'hex';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    state.func('pol');
 }
 export { sin, cos, tan, rectangular, polor }

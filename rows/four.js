@@ -19,12 +19,12 @@ function mask()
 }
 
 function priv()
-{ //TODO method needed
+{ //TODO priv needed
 
 }
 
 function pub()
-{ //TODO method needed
+{ //TODO pub needed
 
 }
 
