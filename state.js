@@ -64,14 +64,17 @@ function display2(type)
 
     if (type === 'rectangular')
     {
-        document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10) + " + " + state.value[1].toString(10) + 'i';
+        document.getElementById("decimalDisplay").innerHTML = state.value[0].toString(10) + " + " + state.value[1].toString(10) + 'i';
         document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
     }
-    //document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
-
-
-
+    else
+    {
+        document.getElementById("decimalDisplay").innerHTML = state.value[0].toString(10) + " < " + state.value[1].toString(10);
+        document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+    }
 }
+//document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
+
 /***********************************************************************************************************************/
 function display()
 {
@@ -124,19 +127,19 @@ function equal()
     switch (state.method.pop())
     {
         case 'rec':
-            let base = number * Math.sin(number2);
-            let opposite = number * Math.cos(number2);
-            state.value.push(opposite);
-            state.value.push(base);
-            display2('angular');
-            break;
-
-        case 'pol':
             let radius = Math.pow(number * number + number2 * number2, 0.5);
             let angle = Math.atan(number / number2);
             state.value.push(radius);
             state.value.push(angle);
-            display2('rectangular')
+            display2('angular')
+            break;
+
+        case 'pol':
+            let base = number * Math.sin(number2);
+            let opposite = number * Math.cos(number2);
+            state.value.push(opposite);
+            state.value.push(base);
+            display2('rectangular');
             break;
 
         case 'r':
