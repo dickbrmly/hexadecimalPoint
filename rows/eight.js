@@ -21,7 +21,7 @@ function nine()
 
 function exp()
 {
-    state.func('exp');
+    state.func('^');
 }
 
 function mod()

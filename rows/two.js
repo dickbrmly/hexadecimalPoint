@@ -2,57 +2,42 @@
  *                                    functions for all 2 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { state } from '../state.js';
+import { state, display } from '../state.js';
 
 function recipocate()
 {
-    if (state.mode === 'down')
-    {
-        state.mode = 'up';
-        document.getElementById("displayShift").style.backgroundColor = 'white';
-    }
-    else
-    {
-        state.mode = 'down';
-        document.getElementById("displayShift").style.backgroundColor = 'gray';
-    }
+    let number = state.value.pop();
+    number = 1 / number;
+    state.value.push(number);
+    display();
 }
 
 function radius()
-{ //TODO method needed
-
+{ //TODO: calc radius
+    state.func('r');
 }
 
 function naturalExponent()
-{ //TODO method needed
-
+{
+    let number = state.value.pop();
+    number = Math.exp(number);
+    state.value.push(number);
+    display();
 }
 
 function ln()
 {
-    if (state.display === 'bin')
-    {
-        state.display = 'normal';
-        document.getElementById("displayBinary").style.backgroundColor = 'gray';
-    }
-    else
-    {
-        state.display = 'binary';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    let number = state.value.pop();
+    number = Math.log(number);
+    state.value.push(number);
+    display();
 }
 
 function abs()
 {
-    if (state.entry === 'hex')
-    {
-        state.entry = 'dec'; //TODO need to show hex/dec entry mode
-        document.getElementById("hex").innerHTML = 'Dec';
-    }
-    else
-    {
-        state.entry = 'hex';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    let number = state.value.pop();
+    number = Math.abs(number);
+    state.value.push(number);
+    display();
 }
 export { recipocate, radius, naturalExponent, ln, abs }

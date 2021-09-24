@@ -27,7 +27,7 @@ import { zero, period } from './rows/eleven.js'
 
 document.getElementById("shift").addEventListener("click", shift); //row 1
 document.getElementById("littleEndian").addEventListener("click", littleEndian);
-document.getElementById("int").addEventListener("click", shift);
+document.getElementById("int").addEventListener("click", integer);
 document.getElementById("bin").addEventListener("click", modeBin);
 document.getElementById("hex").addEventListener("click", modeHex);
 

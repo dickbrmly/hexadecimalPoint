@@ -97,6 +97,11 @@ function equal()
 
     switch (state.method.pop())
     {
+        case '^':
+            number = Math.pow(number, number2);
+            state.value.push(number);
+            break;
+
         case 'and':
             number = number & number2;
             state.value.push(number);

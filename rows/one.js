@@ -2,7 +2,7 @@
  *                                     functions for 1 row of keyboard entries
  * 
  ***********************************************************************************************************************/
-import { state } from '../state.js';
+import { state, display } from '../state.js';
 // TODO: functions for all keyboard functions
 function shift()
 {
@@ -25,7 +25,10 @@ function littleEndian()
 
 function integer()
 {
-    state.push(parseInt(state.value.pop()));
+    let number = state.value.pop();
+    number = parseInt(number);
+    state.value.push(number);
+    display();
 }
 
 function modeBin()
