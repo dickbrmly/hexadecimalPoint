@@ -15,7 +15,7 @@ class Calculator
 
     keyEntry(value)
     {
-        if (state.pressEqual)
+        if (this.pressEqual)
         {
             this.value.pop();
             this.value.push(0);
@@ -29,7 +29,7 @@ class Calculator
         else
         {
             this.position -= 1;
-            let working = this.value.pop() + value * Math.pow(state.factor, this.position);
+            let working = parseFloat(this.value.pop()) + value * Math.pow(state.factor, this.position);
             this.value.push(working.toString());
         }
         display();
@@ -38,19 +38,32 @@ class Calculator
 /*********************************************************************************************************************/
 Calculator.prototype.func = function(entry)
 {
-    if (state.pressEqual) this.pressedEqual = false;
-    if (state.method.length > 0) equal();
-    state.value.push(0);
-    state.method.push(entry);
-    state.direction = 'above';
+    if (this.pressEqual) this.pressedEqual = false;
+    if (this.method.length > 0) equal();
+    this.position = 0;
+    this.value.push(0);
+    this.method.push(entry);
+    this.direction = 'above';
 }
 /*********************************************************************************************************************/
 let state = new Calculator();
 
 function display2(type)
 {
-    let top = parseInt(state.value.peek());
-    let resolve = state.value.peek() - top;
+    let ftop = parseInt(state.value[0]);
+    let resolve = state.value[0] - ftop;
+    let fbottom = 0;
+
+    while (resolve > .000000001)
+    {
+        resolve *= 16;
+        bottom *= 0x10;
+        bottom += parseInt(resolve);
+        resolve = resolve - parseInt(resolve);
+    }
+
+    let top = parseInt(state.value[1]);
+    resolve = state.value[1] - top;
     let bottom = 0;
 
     while (resolve > .000000001)
@@ -61,16 +74,17 @@ function display2(type)
         resolve = resolve - parseInt(resolve);
     }
 
-
     if (type === 'rectangular')
     {
         document.getElementById("decimalDisplay").innerHTML = state.value[0].toString(10) + " + " + state.value[1].toString(10) + 'i';
-        document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+        document.getElementById("hexadecimalDisplay").innerHTML = ftop.toString(16) + '.' + fbottom.toString(16) + ' + ' +
+            top.toString(16) + '.' + bottom.toString(16);
     }
     else
     {
         document.getElementById("decimalDisplay").innerHTML = state.value[0].toString(10) + " < " + state.value[1].toString(10);
-        document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+        document.getElementById("hexadecimalDisplay").innerHTML = ftop.toString(16) + '.' + fbottom.toString(16) + ' < ' +
+            top.toString(16) + '.' + bottom.toString(16);
     }
 }
 //document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
@@ -143,7 +157,7 @@ function equal()
             break;
 
         case 'r':
-            number = number * number + number2 * number2;
+            number = parseFloat(number) * parseFloat(number) + parseFloat(number2) * parseFloat(number2);
             number = Math.pow(number, 0.5);
             state.value.push(number);
             display();
@@ -158,43 +172,45 @@ function equal()
             break;
 
         case 'and':
-            number = number & number2;
+            number = parseFloat(number) & parseFloat(number2);;
             state.value.push(number);
             display();
             break;
 
         case 'or':
-            number = number | number2;
+            number = parseFloat(number) | parseFloat(number2);;
             state.value.push(number);
             display();
             break;
 
         case 'mod':
-            number = number % number2;
+            number = parseFloat(number) % parseFloat(number2);
+            2;
             state.value.push(number);
             display();
             break;
 
         case '/':
-            number /= number2;
+            number = parseFloat(number) / parseFloat(number2);;
             state.value.push(number);
             display();
             break;
 
         case '*':
-            number *= number2;
+            number = parseFloat(number) * parseFloat(number2);;
             state.value.push(number);
             display();
             break;
 
         case '-':
-            number -= number2;
+            number = parseFloat(number) - parseFloat(number2);;
             state.value.push(number);
             display();
             break;
 
         default:
-            number += number2;
+
+            number = parseFloat(number) + parseFloat(number2);
             state.value.push(number);
             display();
             break;
