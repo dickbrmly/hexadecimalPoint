@@ -11,6 +11,11 @@ function zero()
     state.keyEntry(0);
 }
 
-function period() { state.direction = 'below'; }
+function period()
+{
+    state.direction = 'below';
+    state.entry.push('.');
+    display();
+}
 
 export { zero, period }

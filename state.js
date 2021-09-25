@@ -8,6 +8,7 @@ class Calculator
     factor = 10; //or hex
     disp = 'normal'; //or binary
     method = []; //add sub mul div mod 
+    entry = [];
     value = [0];
     position = 0;
     direction = 'above'; //below for below decimal or hexidecimal point
@@ -15,6 +16,7 @@ class Calculator
 
     keyEntry(value)
     {
+        this.entry.push(value);
         if (this.pressEqual)
         {
             this.value.pop();
@@ -47,7 +49,7 @@ Calculator.prototype.func = function(entry)
 }
 /*********************************************************************************************************************/
 let state = new Calculator();
-
+/*********************************************************************************************************************/
 function display2(type)
 {
     let ftop = parseInt(state.value[0]);
@@ -90,7 +92,7 @@ function display2(type)
 //document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
 
 /***********************************************************************************************************************/
-function display()
+function display1()
 {
     document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
 
@@ -107,6 +109,13 @@ function display()
         resolve = resolve - parseInt(resolve);
     }
     document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+}
+/*********************************************************************************************************************/
+/***********************************************************************************************************************/
+function display()
+{
+    let string = state.entry.join("");
+    document.getElementById("decimalDisplay").innerHTML = new String(string);
 }
 /*********************************************************************************************************************/
 Array.prototype.peek = function()
