@@ -20,8 +20,10 @@ function and()
 }
 
 function back()
-{ //TODO: need method here
-
+{
+    if (state.entry.length < 1) return;
+    state.entry.pop()
+    display();
 }
 
 

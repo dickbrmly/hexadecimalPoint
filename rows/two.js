@@ -6,9 +6,10 @@ import { state, display } from '../state.js';
 
 function recipocate()
 {
-    let number = state.value.pop();
+
+    let number = parseFloat(state.entry);
     number = 1 / number;
-    state.value.push(number);
+    state.entry = number.toString().split('');
     display();
 }
 
