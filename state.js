@@ -174,52 +174,45 @@ function equal()
             number = parseFloat(number) * parseFloat(number) + parseFloat(number2) * parseFloat(number2);
             number = Math.pow(number, 0.5);
             state.value.push(number);
-            display1();
 
             break;
 
         case '^':
             number = Math.pow(number, number2);
             state.value.push(number);
-            display1();
 
             break;
 
         case 'and':
             number = parseFloat(number) & parseFloat(number2);;
             state.value.push(number);
-            display1();
             break;
 
         case 'or':
             number = parseFloat(number) | parseFloat(number2);;
             state.value.push(number);
-            display1();
             break;
 
         case 'mod':
             number = parseFloat(number) % parseFloat(number2);
             2;
             state.value.push(number);
-            display1();
             break;
 
         case '/':
             number = parseFloat(number) / parseFloat(number2);;
             state.value.push(number);
-            display1();
             break;
 
         case '*':
             number = parseFloat(number) * parseFloat(number2);;
             state.value.push(number);
-            display1();
             break;
 
         case '-':
             number = parseFloat(number) - parseFloat(number2);;
             state.value.push(number);
-            display1();
+
             break;
 
         default:

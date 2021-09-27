@@ -24,7 +24,7 @@ import { zero, period } from './rows/eleven.js'
  *                                     Listeners for all keyboard entries
  * 
  ***********************************************************************************************************************/
-
+clear();
 document.getElementById("shift").addEventListener("click", shift); //row 1
 document.getElementById("littleEndian").addEventListener("click", littleEndian);
 document.getElementById("int").addEventListener("click", integer);
