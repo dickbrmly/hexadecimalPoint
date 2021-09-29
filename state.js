@@ -45,8 +45,8 @@ function display2(type)
     while (resolve > .000000001)
     {
         resolve *= 16;
-        bottom *= 0x10;
-        bottom += parseInt(resolve);
+        fbottom *= 0x10;
+        fbottom += parseInt(resolve);
         resolve = resolve - parseInt(resolve);
     }
 
@@ -154,13 +154,18 @@ function equal()
 
     switch (state.method.pop())
     {
+        case 'xxor':
+            number = number ^ number2;
+            state.value.push(number);
+            break;
+
         case 'rec':
             let radius = Math.pow(number * number + number2 * number2, 0.5);
             let angle = Math.atan(number / number2);
             state.value.push(radius);
             state.value.push(angle);
             display2('angular')
-            break;
+            return;
 
         case 'pol':
             let base = number * Math.sin(number2);
@@ -168,19 +173,17 @@ function equal()
             state.value.push(opposite);
             state.value.push(base);
             display2('rectangular');
-            break;
+            return;
 
         case 'r':
             number = parseFloat(number) * parseFloat(number) + parseFloat(number2) * parseFloat(number2);
             number = Math.pow(number, 0.5);
             state.value.push(number);
-
             break;
 
         case '^':
             number = Math.pow(number, number2);
             state.value.push(number);
-
             break;
 
         case 'and':

@@ -25,9 +25,9 @@ function littleEndian()
 
 function integer()
 {
-    let number = state.value.pop();
+    let number = parseFloat(state.entry.join(''));
     number = parseInt(number);
-    state.value.push(number);
+    state.entry = number.toString().split('');
     display();
 }
 

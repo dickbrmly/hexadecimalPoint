@@ -6,25 +6,28 @@ import { state, display } from '../state.js';
 
 function sin()
 {
-    let number = state.value.pop();
+    let number = parseFloat(state.entry.join(''));
     number = Math.sin(number);
-    state.value.push(number);
+    state.entry = number.toString().split('');
+    state.equal = true;
     display();
 }
 
 function cos()
 {
-    let number = state.value.pop();
+    let number = parseFloat(state.entry.join(''));
     number = Math.cos(number);
-    state.value.push(number);
+    state.entry = number.toString().split('');
+    state.equal = true;
     display();
 }
 
 function tan()
 { //TODO method needed
-    let number = state.value.pop();
+    let number = parseFloat(state.entry.join(''));
     number = Math.tan(number);
-    state.value.push(number);
+    state.entry = number.toString().split('');
+    state.equal = true;
     display();
 }
 

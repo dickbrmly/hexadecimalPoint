@@ -2,7 +2,7 @@
  *                                    functions for all 4 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { state } from '../state.js';
+import { state, display } from '../state.js';
 
 function mask()
 {
@@ -30,29 +30,14 @@ function pub()
 
 function xxor()
 {
-    if (state.display === 'bin')
-    {
-        state.display = 'normal';
-        document.getElementById("displayBinary").style.backgroundColor = 'gray';
-    }
-    else
-    {
-        state.display = 'binary';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    state.func('xxor');
 }
 
 function shiftLeft()
 {
-    if (state.entry === 'hex')
-    {
-        state.entry = 'dec'; //TODO need to show hex/dec entry mode
-        document.getElementById("hex").innerHTML = 'Dec';
-    }
-    else
-    {
-        state.entry = 'hex';
-        document.getElementById("displayBinary").style.backgroundColor = 'white';
-    }
+    let number = parseFloat(state.entry.join(''));
+    number = number * 2;
+    state.entry = number.toString().split('');
+    display();
 }
 export { mask, priv, pub, xxor, shiftLeft }
