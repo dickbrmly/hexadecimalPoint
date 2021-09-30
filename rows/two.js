@@ -7,7 +7,7 @@ import { state, display } from '../state.js';
 function recipocate()
 {
 
-    let number = parseFloat(state.entry);
+    let number = parseFloat(state.entry.join(''));
     number = 1 / number;
     state.entry = number.toString().split('');
     display();

@@ -4,13 +4,17 @@
  ***********************************************************************************************************************/
 class Calculator
 {
-    shift = 'down'; //or up
+    mask = 0x0;
+    private = 0x0;
+    public = 0x0;
     factor = 10; //or hex
     disp = 'normal'; //or binary
     method = []; //add sub mul div mod 
     entry = [];
     value = [0];
+    shift = false; //or up
     equal = false;
+    deg = false;
 
     keyEntry(value)
     {
@@ -18,6 +22,7 @@ class Calculator
         {
             this.entry = [];
             this.equal = false;
+            document.getElementById("displayBinary").style.backgroundColor = 'gray';
         }
         this.entry.push(value);
         display();
@@ -78,49 +83,24 @@ function display2(type)
 //document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
 
 /***********************************************************************************************************************/
-function display1()
+function display1(value)
 {
-    document.getElementById("decimalDisplay").innerHTML = state.value.peek().toString(10);
-
-    let top = parseInt(state.value.peek());
-
-    let resolve = state.value.peek() - top;
-    let bottom = 0;
-
-    while (resolve > .000000001)
-    {
-        resolve *= 16;
-        bottom *= 0x10;
-        bottom += parseInt(resolve);
-        resolve = resolve - parseInt(resolve);
-    }
-    document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+    document.getElementById("decimalDisplay").innerHTML = state.entry.join('');
+    document.getElementById("hexadecimalDisplay").innerHTML = value;
 }
 /*********************************************************************************************************************/
 /***********************************************************************************************************************/
-function display()
+function display() //TODO: fix hex entry
 {
-    let string = state.entry.join("");
-    if (string === '')
+    let number = () =>
     {
-        document.getElementById("decimalDisplay").innerHTML = new String('0');
-        document.getElementById("hexadecimalDisplay").innerHTML = '0' + '.' + '0';
-        return;
-    }
-    else document.getElementById("decimalDisplay").innerHTML = new String(string);
 
-    let top = parseInt(string);
-    let resolve = parseFloat(string) - top;
-    let bottom = 0;
-
-    while (resolve > .000000001)
-    {
-        resolve *= 16;
-        bottom *= 0x10;
-        bottom += parseInt(resolve);
-        resolve = resolve - parseInt(resolve);
+        let value = parseFloat(state.entry.join(''));
+        if (Number.isNaN(value)) return 0;
+        else return value;
     }
-    document.getElementById("hexadecimalDisplay").innerHTML = top.toString(16) + '.' + bottom.toString(16);
+    document.getElementById("decimalDisplay").innerHTML = number().toString();
+    document.getElementById("hexadecimalDisplay").innerHTML = number().toString(16);
 }
 /*********************************************************************************************************************/
 Array.prototype.peek = function()
@@ -135,6 +115,7 @@ Array.prototype.peek = function()
 /*********************************************************************************************************************/
 function clear()
 {
+
     state.pressEqual = false;
     state.position = 0;
     state.direction = 'above';
@@ -230,4 +211,6 @@ function equal()
     display();
 }
 /***********************************************************************************************************************/
-export { state, display, clear, equal };
+
+/***********************************************************************************************************************/
+export { state, display, display1, clear, equal };
