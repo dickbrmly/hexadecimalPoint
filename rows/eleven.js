@@ -2,7 +2,7 @@
  *                                    functions for all 11 row keyboard entries 
  * 
  ***********************************************************************************************************************/
-import { state, display, clear } from '../state.js';
+import { state, display, clear, error } from '../state.js';
 import { or } from './six.js';
 
 function zero()
@@ -13,9 +13,10 @@ function zero()
 
 function period()
 {
-    state.direction = 'below';
-    state.entry.push('.');
-    display();
+    if (state.below) { error(); }
+    state.below = true;
 }
+
+
 
 export { zero, period }

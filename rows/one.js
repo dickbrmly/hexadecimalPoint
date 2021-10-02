@@ -26,6 +26,9 @@ function shift()
         document.getElementById("public").style.color = "white"; // row 3
         document.getElementById("shiftLeft").innerHTML = ">>"; // row 3;
         document.getElementById("shiftLeft").style.color = "white"; // row 3
+
+        document.getElementById("top").innerHTML = "Rotate"; // row 3;
+        document.getElementById("top").style.color = "white"; // row 3
     }
     else
     {
@@ -47,14 +50,9 @@ function shift()
         document.getElementById("shiftLeft").innerHTML = "<<"; // row 3;
         document.getElementById("shiftLeft").style.color = "black"; // row 3
         document.getElementById("displayShift").style.backgroundColor = 'gray';
+        document.getElementById("top").innerHTML = "Top"; // row 3;
+        document.getElementById("top").style.color = "black"; // row 3
     }
-
-
-}
-
-function littleEndian()
-{ //TODO: function convert only
-    //state.func = 'littleEndian';
 }
 
 function integer()
@@ -111,4 +109,4 @@ function modeHex()
         }
     }
 }
-export { shift, littleEndian, integer, modeBin, modeHex }
+export { shift, integer, modeBin, modeHex }

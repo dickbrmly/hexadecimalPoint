@@ -8,7 +8,7 @@
 import { state, clear, equal } from './state.js';
 //let state = new Calculator();
 
-import { shift, littleEndian, integer, modeBin, modeHex } from './rows/one.js'
+import { shift, integer, modeBin, modeHex } from './rows/one.js'
 import { recipocate, radius, naturalExponent, ln, abs } from './rows/two.js'
 import { sin, cos, tan, rectangular, polor } from './rows/three.js'
 import { mask, priv, pub, xxor, shiftLeft } from './rows/four.js'

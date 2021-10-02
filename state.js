@@ -11,21 +11,50 @@ class Calculator
     disp = 'normal'; //or binary
     method = []; //add sub mul div mod 
     entry = [];
+    store = [];
     value = [0];
+    position = 0;
+    error = false;
+    below = false;
     shift = false; //or up
     equal = false;
     deg = false;
 
+
     keyEntry(value)
     {
+        if (this.error)
+        {
+            error();
+            return;
+        };
+
         if (this.equal)
         {
             this.entry = [];
             this.equal = false;
             document.getElementById("displayBinary").style.backgroundColor = 'gray';
         }
-        this.entry.push(value);
-        display();
+
+        if (this.below)
+        {
+            var number = value * Math.pow(this.factor, this.position - 1);
+            var number2 = parseFloat(this.entry.join(''));
+            if (Number.isNaN(number2)) number2 = 0;
+            number += number2;
+            this.entry = number.toString().split('');
+            this.position -= 1;
+            display();
+        }
+        else
+        {
+            var number = parseFloat(this.entry.join(''));
+            if (state.entry.length < 1) number = 0;
+
+            number = number * this.factor + value;
+            this.entry = number.toString().split('');
+            display();
+        }
     }
 }
 /*********************************************************************************************************************/
@@ -35,7 +64,8 @@ Calculator.prototype.func = function(entry)
     this.method.push(entry);
     this.value.push(parseFloat(this.entry.join('')));
     this.entry = [];
-
+    this.below = false;
+    this.position = 0;
     //this.entry = this.value.peek().toString().split('');
 }
 /*********************************************************************************************************************/
@@ -115,7 +145,9 @@ Array.prototype.peek = function()
 /*********************************************************************************************************************/
 function clear()
 {
-
+    document.getElementById("displayError").style.backgroundColor = 'gray';
+    state.error = false;
+    state.below = false;
     state.pressEqual = false;
     state.position = 0;
     state.direction = 'above';
@@ -211,6 +243,10 @@ function equal()
     display();
 }
 /***********************************************************************************************************************/
-
+function error()
+{
+    state.error = true;
+    document.getElementById("displayError").style.backgroundColor = 'white';
+}
 /***********************************************************************************************************************/
-export { state, display, display1, clear, equal };
+export { state, display, display1, clear, equal, error };
