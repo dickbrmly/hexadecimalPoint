@@ -15,6 +15,7 @@ function period()
 {
     if (state.below) { error(); }
     state.below = true;
+    state.keyEntry('.');
 }
 
 

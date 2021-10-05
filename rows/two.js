@@ -7,23 +7,27 @@ import { state, display } from '../state.js';
 function recipocate()
 {
 
-    let number = parseFloat(state.entry.join(''));
+    let number = state.entryD;
     number = 1 / number;
-    state.entry = number.toString().split('');
+    state.entryD = number;
+    state.entry = number.toString(state.factor).split('');
     display();
+    state.equal = true;
 }
 
 function radius()
-{ //TODO: calc radius
+{
     state.func('r');
 }
 
 function naturalExponent()
 {
-    let number = state.value.pop();
+    let number = state.entryD;
     number = Math.exp(number);
-    state.value.push(number);
+    state.entryD = number;
+    state.entry = number.toString(state.factor).split('');
     display();
+    state.equal = true;
 }
 
 function ln()
@@ -32,6 +36,7 @@ function ln()
     number = Math.log(number);
     state.value.push(number);
     display();
+    state.equal = true;
 }
 
 function abs()
@@ -40,5 +45,6 @@ function abs()
     number = Math.abs(number);
     state.value.push(number);
     display();
+    state.equal = true;
 }
 export { recipocate, radius, naturalExponent, ln, abs }

@@ -3,22 +3,23 @@
  * 
  ***********************************************************************************************************************/
 import { state, display } from '../state.js';
-
+/***********************************************************************************************************************/
 function mask()
 {
     if (state.shift)
     {
-        state.mask = parseInt(state.entry.join(''));
+        state.mask = state.entryD;
     }
     else
     {
-        let result = parseInt(state.entry.join(''));
+        let result = state.entryD;
         result = result & state.mask;
-        state.entry = result.toString().split('');
+        state.entryD = result;
+        state.equal = true;
         display();
     }
 }
-
+/***********************************************************************************************************************/
 function priv()
 { //TODO priv needed
     if (state.shift)
@@ -33,7 +34,7 @@ function priv()
         display();
     }
 }
-
+/***********************************************************************************************************************/
 function pub()
 { //TODO pub needed
     if (state.shift)
@@ -48,26 +49,14 @@ function pub()
         display();
     }
 }
-
-function xxor()
-{
-    state.func('xxor');
-}
-
+/***********************************************************************************************************************/
+function xxor() { state.func('xxor'); }
+/***********************************************************************************************************************/
 function shiftLeft()
 {
-    if (state.shift)
-    {
-        let number = parseFloat(state.entry.join(''));
-        number = number / 2;
-        state.entry = number.toString().split('');
-    }
-    else
-    {
-        let number = parseFloat(state.entry.join(''));
-        number = number * 2;
-        state.entry = number.toString().split('');
-    }
+    if (state.shift) { state.entryD = state.entryD / 2 }
+    else { state.entryD = state.entryD * 2; }
     display();
 }
+/***********************************************************************************************************************/
 export { mask, priv, pub, xxor, shiftLeft }

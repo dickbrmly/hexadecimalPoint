@@ -6,29 +6,74 @@ import { state, display } from '../state.js';
 
 function sin()
 {
-    let number = parseFloat(state.entry.join(''));
-    number = Math.sin(number);
-    state.entry = number.toString().split('');
-    state.equal = true;
-    display();
+    if (state.shift)
+    {
+        let number = state.entryD;
+        number = Math.asin(number);
+        if (state.deg) number *= 180 / Math.PI;
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        display();
+        state.equal = true;
+    }
+    else
+    {
+        let number = state.entryD;
+        if (state.deg) number *= Math.PI / 180;
+        number = Math.sin(number);
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        display();
+        state.equal = true;
+    }
 }
 
 function cos()
 {
-    let number = parseFloat(state.entry.join(''));
-    number = Math.cos(number);
-    state.entry = number.toString().split('');
-    state.equal = true;
-    display();
+    if (state.shift)
+    {
+        let number = state.entryD;
+        number = Math.acos(number);
+        if (state.deg) number *= 180 / Math.PI;
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        display();
+        state.equal = true;
+    }
+    else
+    {
+        let number = state.entryD;
+        if (state.deg) number *= Math.PI / 180;
+        number = Math.cos(number);
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        display();
+        state.equal = true;
+    }
 }
 
 function tan()
 { //TODO method needed
-    let number = parseFloat(state.entry.join(''));
-    number = Math.tan(number);
-    state.entry = number.toString().split('');
-    state.equal = true;
-    display();
+    if (state.shift)
+    {
+        let number = state.entryD;
+        number = Math.atan(number);
+        if (state.deg) number *= 180 / Math.PI;
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        display();
+        state.equal = true;
+    }
+    else
+    {
+        let number = state.entryD;
+        if (state.deg) number *= Math.PI / 180;
+        number = Math.tan(number);
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        display();
+        state.equal = true;
+    }
 }
 
 function rectangular()

@@ -3,7 +3,7 @@
  * 
  ***********************************************************************************************************************/
 import { state, display, display1 } from '../state.js';
-// TODO: functions for all keyboard functions
+
 function shift()
 {
     if (!state.shift)
@@ -57,21 +57,29 @@ function shift()
 
 function integer()
 {
-    let number = parseFloat(state.entry.join(''));
+    let number = state.entryD;
     number = parseInt(number);
-    state.entry = number.toString().split('');
+    state.entryD = number;
+    if (state.factor === 10) state.entry = number.toString(10).split('');
+    else state.entry = number.toString(16).split('');
     display();
 }
 
 function modeBin()
 {
-    let value = state.entry.join('');
-    let number = parseFloat(value, state.factor).toString(2);
-    let str = number.toString(2);
-    state.entry = str.split('');
-    state.equal = true;
-    display1(parseFloat(value).toString(16));
-    document.getElementById("displayBinary").style.backgroundColor = 'white';
+    if (state.bin)
+    {
+        state.bin = false;
+        display();
+        document.getElementById("displayBinary").style.backgroundColor = 'gray';
+    }
+    else
+    {
+        state.bin = true;
+        display1(state.entryD.toString(16));
+        document.getElementById("displayBinary").style.backgroundColor = 'white';
+    }
+
 }
 
 function modeHex()
@@ -81,7 +89,7 @@ function modeHex()
         {
             if (state.factor === 16)
             {
-                state.factor = 10; //TODO need to show hex/dec entry mode
+                state.factor = 10;
                 document.getElementById("displayHex").innerHTML = 'Dec';
                 document.getElementById("displayHex").style.backgroundColor = 'gray';
             }
@@ -97,7 +105,7 @@ function modeHex()
     {
         if (state.deg)
         {
-            state.deg = false; //TODO need to show hex/dec entry mode
+            state.deg = false;
             document.getElementById("displayDeg").innerHTML = 'Rad';
             document.getElementById("displayDeg").style.backgroundColor = 'gray';
         }

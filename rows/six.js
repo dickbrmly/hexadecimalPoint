@@ -6,7 +6,7 @@ import { state, display } from '../state.js';
 
 function f()
 {
-    if (state.factor === 16) state.keyEntry(15);
+    if (state.factor === 16) state.keyEntry('f');
 }
 
 function or()
