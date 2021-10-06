@@ -53,7 +53,7 @@ function cos()
 }
 
 function tan()
-{ //TODO method needed
+{
     if (state.shift)
     {
         let number = state.entryD;

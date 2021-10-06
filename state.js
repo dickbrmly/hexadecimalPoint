@@ -253,8 +253,18 @@ function equal()
             state.value.push(number);
             break;
 
+        case 'nand':
+            number = parseFloat(number) & parseFloat(number2);;
+            state.value.push(~number);
+            break;
+
         case 'and':
             number = parseFloat(number) & parseFloat(number2);;
+            state.value.push(number);
+            break;
+
+        case 'nor':
+            number = ~number & ~number2;
             state.value.push(number);
             break;
 

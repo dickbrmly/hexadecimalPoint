@@ -15,9 +15,11 @@ function mask()
         let result = state.entryD;
         result = result & state.mask;
         state.entryD = result;
+        state.entry = result.toString(state.factor).split('');
         state.equal = true;
-        display();
     }
+    state.equal = true;
+    display();
 }
 /***********************************************************************************************************************/
 function priv()
@@ -29,10 +31,10 @@ function priv()
     else
     {
         let result = parseInt(state.entry.join(''));
-
-        state.entry = result.toString().split('');
-        display();
+        state.entry = result.toString(state.factor).split('');
     }
+    state.equal = true;
+    display();
 }
 /***********************************************************************************************************************/
 function pub()
@@ -45,9 +47,10 @@ function pub()
     {
         let result = parseInt(state.entry.join(''));
 
-        state.entry = result.toString().split('');
-        display();
+        state.entry = result.toString(state.factor).split('');
     }
+    state.equal = true;
+    display();
 }
 /***********************************************************************************************************************/
 function xxor() { state.func('xxor'); }
@@ -56,6 +59,8 @@ function shiftLeft()
 {
     if (state.shift) { state.entryD = state.entryD / 2 }
     else { state.entryD = state.entryD * 2; }
+    state.entry = state.entryD.toString(state.factor).split('');
+    state.equal = true;
     display();
 }
 /***********************************************************************************************************************/

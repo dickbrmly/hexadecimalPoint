@@ -6,19 +6,23 @@ import { state, display } from '../state.js';
 
 function recipocate()
 {
-
-    let number = state.entryD;
-    number = 1 / number;
-    state.entryD = number;
-    state.entry = number.toString(state.factor).split('');
+    if (state.shift)
+    {
+        state.entryD *= -1;
+        state.entry = state.entryD.toString(state.factor).split('');
+    }
+    else
+    {
+        let number = state.entryD;
+        number = 1 / number;
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+    }
     display();
     state.equal = true;
 }
 
-function radius()
-{
-    state.func('r');
-}
+function radius() { state.func('r'); }
 
 function naturalExponent()
 {
@@ -32,18 +36,20 @@ function naturalExponent()
 
 function ln()
 {
-    let number = state.value.pop();
+    let number = state.entryD;
     number = Math.log(number);
-    state.value.push(number);
+    state.entryD = number;
+    state.entry = number.toString(state.factor).split('');
     display();
     state.equal = true;
 }
 
 function abs()
 {
-    let number = state.value.pop();
+    let number = state.entryD;
     number = Math.abs(number);
-    state.value.push(number);
+    state.entryD = number;
+    state.entry = number.toString(state.factor).split('');;
     display();
     state.equal = true;
 }

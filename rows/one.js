@@ -29,6 +29,8 @@ function shift()
 
         document.getElementById("top").innerHTML = "Rotate"; // row 3;
         document.getElementById("top").style.color = "white"; // row 3
+        document.getElementById("1/x").innerHTML = "negate"; // row 2
+        document.getElementById("1/x").style.color = "white"; // row 2
     }
     else
     {
@@ -52,6 +54,8 @@ function shift()
         document.getElementById("displayShift").style.backgroundColor = 'gray';
         document.getElementById("top").innerHTML = "Top"; // row 3;
         document.getElementById("top").style.color = "black"; // row 3
+        document.getElementById("1/x").innerHTML = "1/x"; // row 2
+        document.getElementById("1/x").style.color = "black"; // row 2
     }
 }
 
