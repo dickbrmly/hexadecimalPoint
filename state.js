@@ -299,7 +299,6 @@ function equal()
             state.value.push(number);
             break;
     }
-
     state.entry = [];
     state.entry = state.value.pop().toString(state.factor).split('');
     state.entryD = number;
