@@ -9,6 +9,8 @@ function shift()
     if (!state.shift)
     {
         state.shift = true;
+        document.getElementById("xor").innerHTML = "Save Common"; // row 3
+        document.getElementById("xor").style.color = 'white';
         document.getElementById("hex").innerHTML = "Rad|Deg"; // row 3
         document.getElementById("hex").style.color = 'white';
         document.getElementById("displayShift").style.backgroundColor = 'white';
@@ -35,6 +37,8 @@ function shift()
     else
     {
         state.shift = false;
+        document.getElementById("xor").innerHTML = "Xor"; // row 3
+        document.getElementById("xor").style.color = 'black';
         document.getElementById("hex").innerHTML = "Hex|Dec"; // row 3
         document.getElementById("hex").style.color = 'black';
         document.getElementById("sin").innerHTML = "Sin"; // row 3

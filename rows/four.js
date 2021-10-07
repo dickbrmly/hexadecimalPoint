@@ -26,34 +26,39 @@ function priv()
 { //TODO priv needed
     if (state.shift)
     {
-        state.private = parseInt(state.entry.join(''));
+        state.private = state.entryD;
+        state.equal = true;
     }
     else
     {
-        let result = parseInt(state.entry.join(''));
-        state.entry = result.toString(state.factor).split('');
+        state.entryD = Math.pow(state.entryD, state.private) % state.common;
+        state.entry = state.entryD.toString(state.factor).split('');
+        display();
+        state.equal = true;
     }
-    state.equal = true;
-    display();
 }
 /***********************************************************************************************************************/
 function pub()
 { //TODO pub needed
     if (state.shift)
     {
-        state.public = parseInt(state.entry.join(''));
+        state.public = state.entryD;
+        state.equal = true;
     }
     else
     {
-        let result = parseInt(state.entry.join(''));
-
-        state.entry = result.toString(state.factor).split('');
+        state.entryD = Math.pow(state.entryD, state.public) % state.common;
+        state.entry = state.entryD.toString(state.factor).split('');
+        display();
+        state.equal = true;
     }
-    state.equal = true;
-    display();
 }
 /***********************************************************************************************************************/
-function xxor() { state.func('xxor'); }
+function xxor()
+{
+    if (state.shift) state.common = state.entryD;
+    state.func('xxor');
+}
 /***********************************************************************************************************************/
 function shiftLeft()
 {

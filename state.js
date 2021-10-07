@@ -4,9 +4,10 @@
  ***********************************************************************************************************************/
 class Calculator
 {
-    mask = 0x0;
-    private = 0x0;
-    public = 0x0;
+    mask = 0xF0F0;
+    private = 3;
+    public = 7;
+    common = 30;
     factor = 10; //or hex
     method = []; //add sub mul div mod 
     entry = [];
