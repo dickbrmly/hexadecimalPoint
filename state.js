@@ -7,7 +7,7 @@ class Calculator
     mask = 0xF0F0;
     private = 3;
     public = 7;
-    common = 30;
+    common = 33;
     factor = 10; //or hex
     method = []; //add sub mul div mod 
     entry = [];
