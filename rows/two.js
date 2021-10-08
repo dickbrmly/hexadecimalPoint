@@ -19,7 +19,6 @@ function recipocate()
         state.entry = number.toString(state.factor).split('');
     }
     display();
-    state.equal = true;
 }
 
 function radius() { state.func('r'); }
