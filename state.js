@@ -141,9 +141,9 @@ function display2(type)
 
     if (type === 'rectangular')
     {
-        document.getElementById("decimalDisplay").innerHTML = state.value[ 0 ].toString(10) + " + " + state.value[ 1 ].toString(10) + 'i';
+        document.getElementById("decimalDisplay").innerHTML = state.value[ 0 ].toString(10) + " + " + 'i' + state.value[ 1 ].toString(10);
         document.getElementById("hexadecimalDisplay").innerHTML = ftop.toString(16) + '.' + fbottom.toString(16) + ' + ' +
-            top.toString(16) + '.' + bottom.toString(16);
+            'i' + top.toString(16) + '.' + bottom.toString(16);
     }
     else
     {
@@ -225,12 +225,23 @@ function equal()
             break;
 
         case 'rec':
-            let radius = Math.pow(number * number + number2 * number2, 0.5);
-            let angle = Math.atan(number / number2);
-            state.value.push(radius);
-            state.value.push(angle);
-            display2('angular')
-            state.complex = true;
+            if (state.complex)
+            {
+                let radius = Math.pow(number * number + number2 * number2, 0.5);
+                let angle = Math.atan(number / number2);
+                state.value.push(radius);
+                state.value.push(angle);
+                display2('angular')
+                state.complex = true;
+
+            }
+            else
+            {
+                state.value.push(number);
+                state.value.push(number2);
+                display2('rectangular');
+                state.complex = true;
+            }
             return;
 
         case 'pol':
@@ -239,8 +250,7 @@ function equal()
             let opposite = number * Math.cos(number2);
             state.value.push(opposite);
             state.value.push(base);
-            display2('rectangular');
-            state.complex = true;
+            display2('polar');
             return;
 
         case 'r':

@@ -82,7 +82,7 @@ function modeBin()
     {
         state.bin = false;
         display();
-        document.getElementById("displayBinary").style.backgroundColor = 'gray';
+        document.getElementById("displayBinary").style.backgroundColor = '#dcdcdc';
     }
     else
     {
@@ -102,7 +102,7 @@ function modeHex()
             {
                 state.factor = 10;
                 document.getElementById("displayHex").innerHTML = 'Dec';
-                document.getElementById("displayHex").style.backgroundColor = 'gray';
+                document.getElementById("displayHex").style.backgroundColor = '#dcdcdc';
             }
             else
             {
@@ -118,7 +118,7 @@ function modeHex()
         {
             state.deg = false;
             document.getElementById("displayDeg").innerHTML = 'Rad';
-            document.getElementById("displayDeg").style.backgroundColor = 'gray';
+            document.getElementById("displayDeg").style.backgroundColor = '#dcdcdc';
         }
         else
         {
