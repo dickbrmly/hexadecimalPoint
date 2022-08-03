@@ -13,7 +13,7 @@ class Calculator
     entry = [];
     entryD = 0;
     store = [];
-    value = [0];
+    value = [ 0 ];
     position = 0;
     bin = false;
     complex = false;
@@ -97,7 +97,7 @@ class Calculator
     }
 }
 /*********************************************************************************************************************/
-Calculator.prototype.func = function(entry)
+Calculator.prototype.func = function (entry)
 {
     if (this.method.length > 0) { equal(); }
     this.method.push(entry);
@@ -115,8 +115,8 @@ let state = new Calculator();
 function display2(type)
 {
 
-    let ftop = parseInt(state.value[0]);
-    let resolve = state.value[0] - ftop;
+    let ftop = parseInt(state.value[ 0 ]);
+    let resolve = state.value[ 0 ] - ftop;
     let fbottom = 0;
 
     while (resolve > .000000001)
@@ -127,8 +127,8 @@ function display2(type)
         resolve = resolve - parseInt(resolve);
     }
 
-    let top = parseInt(state.value[1]);
-    resolve = state.value[1] - top;
+    let top = parseInt(state.value[ 1 ]);
+    resolve = state.value[ 1 ] - top;
     let bottom = 0;
 
     while (resolve > .000000001)
@@ -141,15 +141,15 @@ function display2(type)
 
     if (type === 'rectangular')
     {
-        document.getElementById("decimalDisplay").innerHTML = state.value[0].toString(10) + " + " + state.value[1].toString(10) + 'i';
+        document.getElementById("decimalDisplay").innerHTML = state.value[ 0 ].toString(10) + " + " + state.value[ 1 ].toString(10) + 'i';
         document.getElementById("hexadecimalDisplay").innerHTML = ftop.toString(16) + '.' + fbottom.toString(16) + ' + ' +
             top.toString(16) + '.' + bottom.toString(16);
     }
     else
     {
-        let degs = state.value[1];
+        let degs = state.value[ 1 ];
         if (state.deg) degs = degs * 180 / Math.PI;
-        document.getElementById("decimalDisplay").innerHTML = state.value[0].toString(10) + " < " + degs.toString(10);
+        document.getElementById("decimalDisplay").innerHTML = state.value[ 0 ].toString(10) + " < " + degs.toString(10);
         document.getElementById("hexadecimalDisplay").innerHTML = ftop.toString(16) + '.' + fbottom.toString(16) + ' < ' +
             top.toString(16) + '.' + bottom.toString(16);
     }
@@ -182,11 +182,11 @@ function display()
     }
 }
 /*********************************************************************************************************************/
-Array.prototype.peek = function()
+Array.prototype.peek = function ()
 {
     if (this.length > 0)
     {
-        return this[this.length - 1];
+        return this[ this.length - 1 ];
     }
     // empty array... 
     return undefined; // or another default value... 
@@ -195,7 +195,7 @@ Array.prototype.peek = function()
 function clear()
 {
     state.disp = 'normal';
-    document.getElementById("displayError").style.backgroundColor = 'gray';
+    document.getElementById("displayError").style.backgroundColor = 'gainsboro';
     state.error = false;
     state.below = false;
     state.pressEqual = false;

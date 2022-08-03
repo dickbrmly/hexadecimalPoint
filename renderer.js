@@ -6,8 +6,6 @@
 // process.
 
 import { state, clear, equal } from './state.js';
-//let state = new Calculator();
-
 import { shift, integer, modeBin, modeHex } from './rows/one.js'
 import { recipocate, radius, naturalExponent, ln, abs } from './rows/two.js'
 import { sin, cos, tan, rectangular, polor } from './rows/three.js'

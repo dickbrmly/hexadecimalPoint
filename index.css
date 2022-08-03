@@ -1,19 +1,19 @@
 body {
-    background-color: #47565f;
+    background-color: gainsboro;
 }
 
 table.keyboard {
     font: sans-serif;
     font-size: 20px;
-    background-color: gray;
+    background-color: gainsboro;
     width: 200px;
 }
 
 h2 {
     text-align: right;
-    border: solid black;
-    color: yellow;
-    background-color: black;
+    border: solid gray;
+    color: black;
+    background-color: gainsboro;
     width: 275px;
     font-size: 15px;
     margin: 2px;
@@ -21,7 +21,7 @@ h2 {
 
 tr {
     height: 40px;
-    border: 10px solid #1c87c9;
+    border: 10px solid gray;
 }
 
 td {
@@ -35,7 +35,7 @@ td.small {
 }
 
 div.border {
-    background-color: #47565f;
+    background-color: gainsboro;
     width: 400px;
 }
 
