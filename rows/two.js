@@ -25,12 +25,20 @@ function radius() { state.func('r'); }
 
 function naturalExponent()
 {
-    let number = state.entryD;
-    number = Math.exp(number);
-    state.entryD = number;
-    state.entry = number.toString(state.factor).split('');
+    if (state.shift)
+    {
+        state.entryD = Math.PI;
+        state.entry = state.entryD.toString(state.factor).split('');
+    }
+    else
+    {
+        let number = state.entryD;
+        number = Math.exp(number);
+        state.entryD = number;
+        state.entry = number.toString(state.factor).split('');
+        state.equal = true;
+    }
     display();
-    state.equal = true;
 }
 
 function ln()

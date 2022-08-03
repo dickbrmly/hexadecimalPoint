@@ -5,7 +5,7 @@ body {
 table.keyboard {
     font: sans-serif;
     font-size: 20px;
-    background-color: gainsboro;
+    background-color: #dcdcdc;
     width: 200px;
 }
 
